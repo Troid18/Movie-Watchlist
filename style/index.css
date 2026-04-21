@@ -20,16 +20,19 @@ body{
     padding: 1em;
     opacity: 0.9;
     color: #ffffff;
-    
+    width: 100%;
 }
 
 #intro > h1{
+    font-size: 2.67rem;
     text-transform: uppercase;
 }
 
+
+
 h1{
     margin: 0;
-    font-size: 2.67rem;
+    
     font-weight: bold;
 }
 
@@ -146,6 +149,7 @@ img#movie-pic{
     align-self: flex-start;
     border-radius: 15px;
     object-fit: cover;
+    width: 50%;
 }
 
 div#movie-container:hover,

@@ -3,11 +3,13 @@ const searchInput = document.getElementById("movie-search")
 const renderMovies = document.getElementById("movies")
 const placeholderHtml = document.getElementById("placeholder")
 
+import { apiKey } from "./key.js"
+
 searchBtn.addEventListener("click", async () =>{
 
     const searchValue = searchInput.value
 
-    const res = await fetch(`http://www.omdbapi.com/?t=${searchValue}&s=${searchValue}&apikey=65ae8504`)
+    const res = await fetch(`http://www.omdbapi.com/?t=${searchValue}&s=${searchValue}&apikey=${apiKey}`)
     const data = await res.json()
     console.log(data)
     const results = data.Search

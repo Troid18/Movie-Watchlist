@@ -17,7 +17,7 @@ searchBtn.addEventListener("click", async () =>{
         html += `
         <div id="movie-container">
 
-        <img src="${element.Poster}">
+        <img src="${element.Poster}" id="movie-pic">
 
         <div id="details ${element.imdbID}">
 
@@ -26,9 +26,8 @@ searchBtn.addEventListener("click", async () =>{
             <p>${element.Type}</p>
 
         </div>
-
        </div>
-       <hr>
+       
     `
         
     })

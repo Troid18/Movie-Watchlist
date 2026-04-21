@@ -2,6 +2,7 @@ const searchBtn = document.getElementById("search-btn")
 const searchInput = document.getElementById("movie-search")
 const renderMovies = document.getElementById("movies")
 const placeholderHtml = document.getElementById("placeholder")
+const watchlistBtn = document.getElementById("watchlist-btn")
 
 import { apiKey } from "./key.js"
 
@@ -26,6 +27,8 @@ searchBtn.addEventListener("click", async () =>{
             <h1>${element.Title}</h1>
             <h2>${element.Year}</h2>
             <p>${element.Type}</p>
+
+            <button type="button" id="watchlist-btn">Add to watchlist</button>
 
         </div>
        </div>

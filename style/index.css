@@ -28,6 +28,21 @@ body{
     text-transform: uppercase;
 }
 
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#intro a{
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+#intro a:hover,
+#intro a:focus{
+    color: #f7c948;
+    border-bottom: 5px solid #8a8a8a;
+}
 
 
 h1{
@@ -158,3 +173,18 @@ div#movie-container:focus{
 
 }
 
+button#watchlist-btn{
+    padding: 1.5em 1em;
+    background: #f7c948;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    
+}
+
+button#watchlist-btn:hover,
+button#watchlist-btn:focus{
+    box-shadow: 0 0 5px #ffffff;
+
+}

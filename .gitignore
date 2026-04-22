@@ -3,3 +3,10 @@ js/key.js
 
 # Other files
 favicon_io.zip
+
+.gitignore
+
+.env
+.env.local
+node_modules/
+

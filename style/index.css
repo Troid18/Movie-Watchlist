@@ -35,13 +35,16 @@ a{
     color: #ffffff;
 }
 
-#intro a{
+#intro a,
+.placeholder a{
     font-weight: bold;
     margin-top: 1em;
 }
 
 #intro a:hover,
-#intro a:focus{
+#intro a:focus,
+.placeholder a:hover,
+.placeholder a:focus{
     color: #f7c948;
     border-bottom: 5px solid #8a8a8a;
 }
@@ -142,6 +145,7 @@ input[type="search"]:focus{
     justify-self: center;
     margin-top: 10em;
     width: 50%;
+    margin-bottom: 1em;
     
 }
 
@@ -178,7 +182,8 @@ div#movie-container:focus{
 
 }
 
-button.watchlist-btn{
+button.watchlist-btn,
+button.remove-btn{
     padding: 1.5em 1em;
     background: #f7c948;
     border: none;
@@ -189,7 +194,9 @@ button.watchlist-btn{
 }
 
 button.watchlist-btn:hover,
-button.watchlist-btn:focus{
+button.watchlist-btn:focus,
+button.remove-btn:focus,
+button.remove-btn:hover{
     box-shadow: 0 0 5px #ffffff;
 
 }

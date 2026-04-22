@@ -2,7 +2,6 @@ const searchBtn = document.getElementById("search-btn")
 const searchInput = document.getElementById("movie-search")
 const renderMovies = document.getElementById("movies")
 const placeholderHtml = document.getElementById("placeholder")
-const watchlistBtn = document.getElementById("watchlist-btn")
 
 import { apiKey } from "./key.js"
 
@@ -28,7 +27,7 @@ searchBtn.addEventListener("click", async () =>{
             <h2>${element.Year}</h2>
             <p>${element.Type}</p>
 
-            <button type="button" id="watchlist-btn">Add to watchlist</button>
+            <button type="button" class="watchlist-btn" data-id="${element.imdbID}" data-title="${element.Title}">Add to watchlist</button>
 
         </div>
        </div>
@@ -40,14 +39,19 @@ searchBtn.addEventListener("click", async () =>{
     placeholderHtml.style.display = "none"
     renderMovies.innerHTML = html
 
-
-    //{
-//     "Title": "Blade Runner",
-//     "Year": "1982",
-//     "imdbID": "tt0083658",
-//     "Type": "movie",
-//     "Poster": "https://m.media-amazon.com/images/M/MV5BOWQ4YTBmNTQtMDYxMC00NGFjLTkwOGQtNzdhNmY1Nzc1MzUxXkEyXkFqcGc@._V1_SX300.jpg"
-// }
-
-// 
+    const buttons = document.querySelectorAll(".watchlist-btn")
+    buttons.forEach(button => {
+        button.addEventListener("click", handleWatchlistBtn)
+    })
 })
+
+function handleWatchlistBtn(e) {
+    const movieId = e.target.dataset.id
+    const movieTitle = e.target.dataset.title
+    console.log(`Added to watchlist: ${movieTitle} (${movieId})`)
+    // TODO: Add movie to watchlist storage/state
+}
+
+
+ 
+ 

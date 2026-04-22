@@ -78,9 +78,9 @@ function handleWatchlistBtn(e) {
     if (!exists) {
         storeMovies.push(movie)
         localStorage.setItem("watchlist", JSON.stringify(storeMovies))
-        console.log(`Added to watchlist: ${movieTitle}`)
+        alert(`Added to watchlist: ${movieTitle}`)
     } else {
-        console.log(`${movieTitle} is already in your watchlist`)
+        alert(`${movieTitle} is already in your watchlist`)
     }
 }
 

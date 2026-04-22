@@ -2,8 +2,17 @@ const searchBtn = document.getElementById("search-btn")
 const searchInput = document.getElementById("movie-search")
 const renderMovies = document.getElementById("movies")
 const placeholderHtml = document.getElementById("placeholder")
+let storeMovies = []
 
 import { apiKey } from "./key.js"
+
+
+window.addEventListener("DOMContentLoaded", () => {
+    const saved = localStorage.getItem("watchlist")
+    if (saved) {
+        storeMovies = JSON.parse(saved)
+    }
+})
 
 searchBtn.addEventListener("click", async () =>{
 
@@ -48,8 +57,31 @@ searchBtn.addEventListener("click", async () =>{
 function handleWatchlistBtn(e) {
     const movieId = e.target.dataset.id
     const movieTitle = e.target.dataset.title
-    console.log(`Added to watchlist: ${movieTitle} (${movieId})`)
-    // TODO: Add movie to watchlist storage/state
+    
+    // Get movie details from the DOM
+    const movieContainer = e.target.closest("#movie-container")
+    const poster = movieContainer.querySelector("#movie-pic").src
+    const year = movieContainer.querySelector("h2").textContent
+    const type = movieContainer.querySelector("p").textContent
+    
+    // Create movie object
+    const movie = {
+        imdbID: movieId,
+        Title: movieTitle,
+        Poster: poster,
+        Year: year,
+        Type: type
+    }
+    
+    const exists = storeMovies.some(m => m.imdbID === movieId)
+    
+    if (!exists) {
+        storeMovies.push(movie)
+        localStorage.setItem("watchlist", JSON.stringify(storeMovies))
+        console.log(`Added to watchlist: ${movieTitle}`)
+    } else {
+        console.log(`${movieTitle} is already in your watchlist`)
+    }
 }
 
 

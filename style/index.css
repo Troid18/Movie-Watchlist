@@ -178,7 +178,7 @@ div#movie-container:focus{
 
 }
 
-button#watchlist-btn{
+button.watchlist-btn{
     padding: 1.5em 1em;
     background: #f7c948;
     border: none;
@@ -188,8 +188,8 @@ button#watchlist-btn{
     
 }
 
-button#watchlist-btn:hover,
-button#watchlist-btn:focus{
+button.watchlist-btn:hover,
+button.watchlist-btn:focus{
     box-shadow: 0 0 5px #ffffff;
 
 }

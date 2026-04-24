@@ -15,43 +15,56 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 searchBtn.addEventListener("click", async () =>{
+    try{
 
-    const searchValue = searchInput.value
-
-    const res = await fetch(`http://www.omdbapi.com/?t=${searchValue}&s=${searchValue}&apikey=${apiKey}`)
-    const data = await res.json()
-    console.log(data)
-    const results = data.Search
-    let html = ""
-
-    results.forEach(element => {
-        html += `
-        <div id="movie-container">
-
-        <img src="${element.Poster}" id="movie-pic">
-
-        <div id="details ${element.imdbID}">
-
-            <h1>${element.Title}</h1>
-            <h2>${element.Year}</h2>
-            <p>${element.Type}</p>
-
-            <button type="button" class="watchlist-btn" data-id="${element.imdbID}" data-title="${element.Title}">Add to watchlist</button>
-
-        </div>
-       </div>
-       
-    `
         
-    })
+        const searchValue = searchInput.value
 
-    placeholderHtml.style.display = "none"
-    renderMovies.innerHTML = html
+        const res = await fetch(`http://www.omdbapi.com/?t=${searchValue}&s=${searchValue}&apikey=${apiKey}`)
+        if (res.ok){
+            const data = await res.json()
+            console.log(data)
+            const results = data.Search
+            let html = ""
 
-    const buttons = document.querySelectorAll(".watchlist-btn")
-    buttons.forEach(button => {
-        button.addEventListener("click", handleWatchlistBtn)
-    })
+            results.forEach(element => {
+                html += `
+                <div id="movie-container">
+
+                <img src="${element.Poster}" id="movie-pic">
+
+                <div id="details ${element.imdbID}">
+
+                    <h1>${element.Title}</h1>
+                    <h2>${element.Year}</h2>
+                    <p>${element.Type}</p>
+
+                    <button type="button" class="watchlist-btn" data-id="${element.imdbID}" data-title="${element.Title}">Add to watchlist</button>
+
+                </div>
+            </div>
+            
+            `
+            placeholderHtml.style.display = "none"
+            renderMovies.innerHTML = html
+
+            const buttons = document.querySelectorAll(".watchlist-btn")
+            buttons.forEach(button => {
+                button.addEventListener("click", handleWatchlistBtn)
+            })
+            
+            })
+
+        } else {
+            throw new Error("Failed to load search results")
+        }
+
+    } catch (err){
+        console.error(err)
+        renderMovies.innerHTML = `<p>Unable to find what you're looking for. Please try another search.</p>`
+        placeholderHtml.style.display = "none"
+    }
+
 })
 
 function handleWatchlistBtn(e) {
